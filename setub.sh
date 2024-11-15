@@ -16,6 +16,16 @@ REDBG="\033[41;37m"
 OK="${Green}--->${FONT}"
 ERROR="${RED}[ERROR]${FONT}"
 GRAY="\e[1;30m"
+greene="\e[38;5;82m"
+red="\e[38;5;196m"
+neutral="\e[0m"
+orange="\e[38;5;130m"
+blue="\e[38;5;39m"
+yellow="\e[38;5;226m"
+purple="\e[38;5;141m"
+bold_white="\e[1;37m"
+reset="\e[0m"
+pink="\e[38;5;205m"
 NC='\e[0m'
 red='\e[1;31m'
 green='\e[0;32m'
@@ -30,9 +40,9 @@ export IP=$( curl -sS icanhazip.com )
 clear
 clear && clear && clear
 clear;clear;clear
-echo -e "${YELLOW}----------------------------------------------------------${NC}"
-echo -e "\033[96;1m              WELCOME TO SRICPT BY PASAR VPN             \033[0m"
-echo -e "${YELLOW}----------------------------------------------------------${NC}"
+echo -e "${yellow}----------------------------------------------------------${NC}"
+echo -e "\e[38;5;82m              WELCOME TO SRICPT BY PASAR VPN             \033[0m"
+echo -e "${yellow}----------------------------------------------------------${NC}"
 echo ""
 sleep 3
 if [[ $( uname -m | awk '{print $1}' ) == "x86_64" ]]; then
@@ -114,9 +124,9 @@ function print_ok() {
 echo -e "${OK} ${BLUE} $1 ${FONT}"
 }
 function print_install() {
-echo -e "${green} =============================== ${FONT}"
+echo -e "${greene} =============================== ${FONT}"
 echo -e "${YELLOW} # $1 ${FONT}"
-echo -e "${green} =============================== ${FONT}"
+echo -e "${greene} =============================== ${FONT}"
 sleep 1
 }
 function print_error() {
@@ -124,9 +134,9 @@ echo -e "${ERROR} ${REDBG} $1 ${FONT}"
 }
 function print_success() {
 if [[ 0 -eq $? ]]; then
-echo -e "${green} =============================== ${FONT}"
+echo -e "${greene} =============================== ${FONT}"
 echo -e "${Green} # $1 berhasil dipasang"
-echo -e "${green} =============================== ${FONT}"
+echo -e "${greene} =============================== ${FONT}"
 sleep 2
 fi
 }
@@ -233,11 +243,11 @@ clear
 function pasang_domain() {
 echo -e ""
 clear
-echo -e "    ----------------------------------"
-echo -e "   |\e[1;32mPlease Select a Domain Type Below \e[0m|"
-echo -e "    ----------------------------------"
-echo -e "     \e[1;32m1)\e[0m Your Domain"
-echo -e "     \e[1;32m2)\e[0m Random Domain "
+echo -e " ----------------------------------"
+echo -e " |\e[38;5;82mPlease Select a Domain Type Below \e[0m|"
+echo -e " ----------------------------------"
+echo -e " \e[38;5;82m1)\e[0m Your Domain"
+echo -e " \e[38;5;82m2)\e[0m Random Domain "
 echo -e "   ------------------------------------"
 read -p "   Please select numbers 1-2 or Any Button(Random) : " host
 echo ""
@@ -245,18 +255,18 @@ if [[ $host == "1" ]]; then
 clear
 echo ""
 echo ""
-echo -e "   \e[1;36m_______________________________$NC"
-echo -e "   \e[1;32m      CHANGES DOMAIN $NC"
-echo -e "   \e[1;36m_______________________________$NC"
+echo -e "   \e[38;5;82m_______________________________$NC"
+echo -e "   \e[38;5;82m      CHANGES DOMAIN $NC"
+echo -e "   \e[38;5;82m_______________________________$NC"
 echo -e ""
 read -p "   INPUT YOUR DOMAIN :   " host1
-echo -e "   \e[1;32mPlease Enter Your Name $NC"
+echo -e "   \e[38;5;82mPlease Enter Your Name $NC"
 read -p "   Masukan User Script 12 Karakter: " nama
 echo "IP=${host1}" >> /var/lib/kyt/ipvps.conf
 echo $host1 > /etc/xray/domain
 echo $host1 > /root/domain
 if [[ $nama = "" ]]; then
-echo "TUNNELING OFFICIAL" > /etc/xray/username
+echo "HALLO WORD" > /etc/xray/username
 else
 echo $nama > /etc/xray/username
 fi
@@ -959,12 +969,28 @@ secs_to_human "$(($(date +%s) - ${start}))"
 sudo hostnamectl set-hostname $username
 clear
 echo -e ""
+echo -e "--------------------------------------"
+echo -e "    Script Auto Install by Pasar Vpn"
+echo -e "--------------------------------------"
+echo -e "         Detail Konfigurasi"
+echo -e "--------------------------------------"
 echo -e ""
-echo -e "\033[96m==========================\033[0m"
-echo -e "\033[92m      INSTALL SUCCES      \033[0m"
-echo -e "\033[96m==========================\033[0m"
+echo -e "Host         : $IP"
+echo -e "Port OpenSSH : 22,444"
+echo -e "Port Dropbear: 143,80,236"
+echo -e "Port SSL     : 443,943"
+echo -e "BadVPN UDPGW : 7100,7200,7300"
+echo -e "             : 7400,7500,7600"
+echo -e "Squid Proxy  : 8000,8080,8989"
+echo -e "OpenVPN TCP  : 1194"
+echo -e "OpenVPN SSL  : 2905,9443"
+echo -e "OpenVPN UDP  : 25000"
+echo -e "Config http://$IP:81/myvpn-config.zip"
 echo -e ""
-sleep 2
+echo -e "--------------------------------------"
+echo -e "      Donate   :   t.me/Ceria_sh"
+echo -e "--------------------------------------"
+sleep 5
 clear
 echo -e "\033[93;1m Wait inn 4 sec...\033[0m"
 sleep 4
